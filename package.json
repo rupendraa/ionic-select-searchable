@@ -1,9 +1,10 @@
 {
-    "version": "0.0.0",
-    "name": "ionic-select-searchable",
+    "name": "@williarts/ionic-select-searchable",
+    "version": "1.0.0",
+    "description": "Módulo selected para uso de projetos williarts",
     "repository": {
         "type": "git",
-        "url": "https://github.com/eakoriakin/ionic-select-searchable.git"
+        "url": "https://github.com/williarts/ionic-select-searchable.git"
     },
     "license": "MIT",
     "devDependencies": {
@@ -22,6 +23,8 @@
         "gulp": "^3.9.1",
         "gulp-rename": "^1.2.2",
         "gulp-rollup": "^2.15.0",
+        "ionic-angular": ">=3.6.0",
+        "ionicons": ">=3.0.0",
         "node-sass": "^4.5.2",
         "node-sass-tilde-importer": "^1.0.0",
         "node-watch": "^0.5.2",
@@ -32,9 +35,7 @@
         "ts-node": "~3.2.0",
         "tslint": "~5.7.0",
         "typescript": "2.4.2",
-        "zone.js": "^0.8.14",
-        "ionic-angular": ">=3.6.0",
-        "ionicons": ">=3.0.0"
+        "zone.js": "^0.8.14"
     },
     "engines": {
         "node": ">=6.0.0"
@@ -46,7 +47,9 @@
         "docs:build": "compodoc -p tsconfig.json -n select-searchable -d docs --hideGenerator",
         "docs:serve": "npm run docs:build -- -s",
         "docs:watch": "npm run docs:build -- -s -w",
-        "lint": "tslint --type-check --project tsconfig.json src/**/*.ts"
+        "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
+        "packagr": "ng-packagr -p package.json",
+        "publish": "npm publish dist --access public"
     },
     "dependencies": {
         "gulp-header": "2.0.5",
