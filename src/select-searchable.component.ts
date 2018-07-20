@@ -292,7 +292,9 @@ export class SelectSearchableComponent implements ControlValueAccessor, OnInit, 
         // We need this in case value contains only id, which is not sufficient for template rendering.
         if (this.value && !this._isNullOrWhiteSpace(this.value[this.itemValueField])) {
             let selectedItem = this.items.find(item => {
-                return item[this.itemValueField] === this.value[this.itemValueField];
+                let a = this.removeAcento(item[this.itemValueField]);
+                let b = this.removeAcento(this.value[this.itemValueField]);
+                return a === b;
             });
 
             if (selectedItem) {
@@ -386,5 +388,16 @@ export class SelectSearchableComponent implements ControlValueAccessor, OnInit, 
                 resolve();
             });
         });
+    }
+
+    private removeAcento(text) {
+        text = text.toLowerCase();
+        text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+        text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+        text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+        text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+        text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+        text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
+        return text;
     }
 }
